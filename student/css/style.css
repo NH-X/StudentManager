@@ -1,6 +1,12 @@
+html{
+    background-color: aquamarine;
+}
+
 .edit {
     margin: 0 auto;
     text-align: center;
+    max-width: 300px;
+    max-height: 50px;
 }
 
 .edit h1 {
@@ -13,6 +19,26 @@
     margin-bottom: 10px;
     color: #333;
     font-size: 18px;
+    text-align: left;
+}
+
+.edit input[type="text"],
+.edit input[type="password"] {
+    width: 230px;
+    height: 25px;
+    padding: 5px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.edit .required {
+    color: red;
+    margin-left: 5px;
+}
+
+.edit label span {
+    margin-left: 5px;
+    color: red;
 }
 
 .edit .studentId {
@@ -22,9 +48,23 @@
     font-size: 16px;
 }
 
-.edit input[type="password"] {
+.edit .password {
     width: 250px;
     height: 30px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.edit input[type="text"] {
+    width: 250px;
+    height: 25px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.edit input[type="password"] {
+    width: 250px;
+    height: 25px;
     padding: 5px;
     font-size: 16px;
 }
@@ -47,4 +87,17 @@
 
 .edit input[type="submit"]:focus {
     outline: none;
+}
+
+.links{
+    margin-top: 30px;
+}
+
+.links p {
+    text-align: center;
+}
+
+.links a {
+    display: inline;
+    margin: 0 5px; /* 可调整间距 */
 }

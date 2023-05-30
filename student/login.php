@@ -39,7 +39,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>学生登录</title>
+        <title>登录</title>
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
@@ -54,6 +54,13 @@
 
                 <input type="submit" value="登录">
             </form>
+        </div>
+        <div class="links">
+            <p>
+                <a href="signup.php">注册帐户</a>
+                &nbsp;&nbsp;or&nbsp;&nbsp;
+                <a href="../manager/login.php">管理员登录</a>
+            </p>
         </div>
     </body>
 </html>
