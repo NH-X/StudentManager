@@ -50,7 +50,7 @@
                 <input class="studentId" type="text" name="student_id" id="student_id" required><br><br>
 
                 <label for="password">密码：</label>
-                <input type="password" name="password" id="password" required><br><br>
+                <input class="password" type="password" name="password" id="password" required><br><br>
 
                 <input type="submit" value="登录">
             </form>
