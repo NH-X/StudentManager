@@ -40,13 +40,13 @@
 <html>
     <head>
         <title>登录</title>
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="../student/css/style.css">
     </head>
     <body>
         <div class="edit">
-            <h1>学生登录</h1>
+            <h1>管理员登录</h1>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <label for="student_id">学生ID：</label>
+                <label for="student_id">账号：</label>
                 <input class="studentId" type="text" name="student_id" id="student_id" required><br><br>
 
                 <label for="password">密码：</label>
