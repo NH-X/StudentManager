@@ -22,46 +22,21 @@ html{
     text-align: left;
 }
 
-.edit input[type="text"],
-.edit input[type="password"] {
-    width: 230px;
-    height: 25px;
-    padding: 5px;
-    font-size: 16px;
-    margin-right: 5px;
-}
-
-.edit .required {
-    color: red;
-    margin-left: 5px;
-}
-
-.edit label span {
-    margin-left: 5px;
-    color: red;
-}
-
 .edit .studentId {
-    width: 250px;
+    width: 230px;
     height: 30px;
     padding: 5px;
     font-size: 16px;
 }
 
 .edit .password {
-    width: 250px;
+    width: 230px;
     height: 30px;
     padding: 5px;
     font-size: 16px;
 }
 
-.edit input[type="text"] {
-    width: 250px;
-    height: 25px;
-    padding: 5px;
-    font-size: 16px;
-}
-
+.edit input[type="text"],
 .edit input[type="password"] {
     width: 250px;
     height: 25px;
