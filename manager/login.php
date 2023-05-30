@@ -57,7 +57,7 @@
         </div>
         <div class="links">
             <p>
-                <a href="../manager/login.php">管理员登录</a>
+                <a href="../student/login.php">学生登录</a>
             </p>
         </div>
     </body>
