@@ -1,0 +1,7 @@
+{
+    "servername":"localhost",
+    "port":3306,
+    "user":"root",
+    "password":"XNH-123",
+    "dbName":"classManager"
+}
