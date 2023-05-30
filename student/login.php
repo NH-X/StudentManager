@@ -6,7 +6,7 @@
         $password = $_POST["password"];
 
         // 执行数据库查询以检查登录凭据
-        $config = file_get_contents("config.json");
+        $config = file_get_contents("../config.json");
         $config = json_decode($config, true);
 
         $conn = mysqli_connect($config['servername'], $config['user'], $config['password'], $config['dbName'], $config['port']);
@@ -43,15 +43,17 @@
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
-        <h1>学生登录</h1>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <label for="student_id">学生ID：</label>
-            <input type="text" name="student_id" id="student_id" required><br><br>
+        <div class="edit">
+            <h1>学生登录</h1>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <label for="student_id">学生ID：</label>
+                <input class="studentId" type="text" name="student_id" id="student_id" required><br><br>
 
-            <label for="password">密码：</label>
-            <input type="password" name="password" id="password" required><br><br>
+                <label for="password">密码：</label>
+                <input type="password" name="password" id="password" required><br><br>
 
-            <input type="submit" value="登录">
-        </form>
+                <input type="submit" value="登录">
+            </form>
+        </div>
     </body>
 </html>

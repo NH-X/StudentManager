@@ -1,4 +1,50 @@
-edit{
-    width: 100px;
+.edit {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.edit h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+.edit label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 18px;
+}
+
+.edit .studentId {
+    width: 250px;
     height: 30px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.edit input[type="password"] {
+    width: 250px;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.edit input[type="submit"] {
+    width: 120px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.edit input[type="submit"]:hover {
+    background-color: #0069d9;
+}
+
+.edit input[type="submit"]:focus {
+    outline: none;
 }
