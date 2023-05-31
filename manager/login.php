@@ -2,7 +2,7 @@
     // 检查是否提交了表单
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 获取输入值
-        $student_id = $_POST["student_id"];
+        $admin_id = $_POST["admin_id"];
         $password = $_POST["password"];
 
         // 执行数据库查询以检查登录凭据
@@ -11,9 +11,9 @@
 
         $conn = mysqli_connect($config['servername'], $config['user'], $config['password'], $config['dbName'], $config['port']);
 
-        $selectSQL = "SELECT `_id` FROM manager WHERE `admin_name` = ? AND `password` = ?";
+        $selectSQL = "SELECT `_id`,`admin_id` FROM manager WHERE `admin_id` = ? AND `password` = ?";
         $stmt = mysqli_prepare($conn, $selectSQL);
-        mysqli_stmt_bind_param($stmt, "ss", $student_id, $password);
+        mysqli_stmt_bind_param($stmt, "ss", $admin_id, $password);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
 
@@ -21,10 +21,10 @@
         if(mysqli_num_rows($result) > 0){
             // 从结果中获取学生ID
             $row = mysqli_fetch_assoc($result);
-            $student_id = $row["_id"];
+            $admin_id = $row["admin_id"];
 
             // 重定向到index.php并携带学生ID
-            header("Location: index.php?student_id=" . $student_id);
+            header("Location: index.php?admin=" . $admin_id);
             exit();
         } else {
             // 重定向到login_false.php
@@ -46,8 +46,8 @@
         <div class="edit">
             <h1>管理员登录</h1>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <label for="student_id">账号：</label>
-                <input class="username" type="text" name="student_id" id="student_id" required><br><br>
+                <label for="admin_id">账号：</label>
+                <input class="username" type="text" name="admin_id" id="admin_id" required><br><br>
 
                 <label for="password">密码：</label>
                 <input class="password" type="password" name="password" id="password" required><br><br>

@@ -11,7 +11,7 @@
 
         $conn = mysqli_connect($config['servername'], $config['user'], $config['password'], $config['dbName'], $config['port']);
 
-        $selectSQL = "SELECT `_id` FROM student WHERE `student_id` = ? AND `password` = ?";
+        $selectSQL = "SELECT `_id`,`student_id` FROM student WHERE `student_id` = ? AND `password` = ?";
         $stmt = mysqli_prepare($conn, $selectSQL);
         mysqli_stmt_bind_param($stmt, "ss", $student_id, $password);
         mysqli_stmt_execute($stmt);
@@ -21,7 +21,7 @@
         if(mysqli_num_rows($result) > 0){
             // 从结果中获取学生ID
             $row = mysqli_fetch_assoc($result);
-            $student_id = $row["_id"];
+            $student_id = $row["student_id"];
 
             // 重定向到index.php并携带学生ID
             header("Location: index.php?student_id=" . $student_id);
