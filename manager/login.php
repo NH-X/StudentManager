@@ -11,7 +11,7 @@
 
         $conn = mysqli_connect($config['servername'], $config['user'], $config['password'], $config['dbName'], $config['port']);
 
-        $selectSQL = "SELECT `_id` FROM student WHERE `student_id` = ? AND `password` = ?";
+        $selectSQL = "SELECT `_id` FROM manager WHERE `admin_name` = ? AND `password` = ?";
         $stmt = mysqli_prepare($conn, $selectSQL);
         mysqli_stmt_bind_param($stmt, "ss", $student_id, $password);
         mysqli_stmt_execute($stmt);
@@ -47,7 +47,7 @@
             <h1>管理员登录</h1>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <label for="student_id">账号：</label>
-                <input class="studentId" type="text" name="student_id" id="student_id" required><br><br>
+                <input class="username" type="text" name="student_id" id="student_id" required><br><br>
 
                 <label for="password">密码：</label>
                 <input class="password" type="password" name="password" id="password" required><br><br>
