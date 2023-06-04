@@ -1,17 +1,43 @@
 html{
-    background-color: aquamarine;
+    
 }
 
+body{
+    background-image: url(../image/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 10px solid red; /* Add border style */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border: 10px solid red; /* Add border style */
+}
+
+th {
+    background-color: #ddd;
+}
+
+/* Add styling for the .edit container */
 .edit {
     margin: 0 auto;
     text-align: center;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 800px;
 }
 
 .edit h1 {
     color: #333;
     font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .edit label {
