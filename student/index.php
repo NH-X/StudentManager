@@ -31,16 +31,48 @@ if (isset($_GET['student_id'])) {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Retrieve the updated information from the form
         $password = $_POST["password"];
-        $classmsg = $_POST["classmsg"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
         $qq = $_POST["qq"];
         $weChat = $_POST["weChat"];
 
         // Prepare and execute the UPDATE query
-        $updateSQL = "UPDATE student SET `password` = ?, `classmsg` = ?, `phone` = ?, `email` = ?, `qq` = ?, `weChat` = ? WHERE `student_id` = ?";
+        $updateSQL = "UPDATE student SET ";
+        $params = array();
+        $types = "";
+
+        if (!empty($phone)) {
+            $updateSQL .= "`phone` = ?, ";
+            $params[] = $phone;
+            $types .= "s";
+        }
+
+        if (!empty($email)) {
+            $updateSQL .= "`email` = ?, ";
+            $params[] = $email;
+            $types .= "s";
+        }
+
+        if (!empty($qq)) {
+            $updateSQL .= "`qq` = ?, ";
+            $params[] = $qq;
+            $types .= "s";
+        }
+
+        if (!empty($weChat)) {
+            $updateSQL .= "`weChat` = ?, ";
+            $params[] = $weChat;
+            $types .= "s";
+        }
+
+        $updateSQL = rtrim($updateSQL, ", "); // Remove trailing comma and space
+
+        $updateSQL .= " WHERE `student_id` = ?";
+        $params[] = $studentId;
+        $types .= "s";
+
         $stmt = mysqli_prepare($conn, $updateSQL);
-        mysqli_stmt_bind_param($stmt, "sssssss", $password, $classmsg, $phone, $email, $qq, $weChat, $studentId);
+        mysqli_stmt_bind_param($stmt, $types, ...$params);
         mysqli_stmt_execute($stmt);
 
         // Check if the update was successful
@@ -67,38 +99,37 @@ if (isset($_GET['student_id'])) {
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Student Homepage</title>
-        <link rel="stylesheet" href="./css/style.css"/>
-    </head>
-    <body>
-        <div>
-            <h1>Welcome, <?php echo $student['student_name']; ?></h1>
-            <p>Student ID: <?php echo $student['student_id']; ?></p>
-            <p>Class: <?php echo $student['classmsg']; ?></p>
+<head>
+    <title>Student Homepage</title>
+    <link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+    <div class="edit">
+        <h1>Welcome, <?php echo $student['student_name']; ?></h1>
+        <p>Student ID: <?php echo $student['student_id']; ?></p>
+        <p>Class: <?php echo $student['classmsg']; ?></p>
 
-            <!-- Update Form -->
-            <form method="post" action="">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" value="<?php echo $student['password']; ?>" required>
+        <!-- Update Form -->
+        <form method="post" action="">
 
-                <label for="classmsg">Class:</label>
-                <input type="text" name="classmsg" id="classmsg" value="<?php echo $student['classmsg']; ?>" required disabled>
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" id="phone" value="<?php echo $student['phone']; ?>">
+            <br>
 
-                <label for="phone">Phone:</label>
-                <input type="text" name="phone" id="phone" value="<?php echo $student['phone']; ?>" required>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="<?php echo $student['email']; ?>">
+            <br>
 
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" value="<?php echo $student['email']; ?>" required>
+            <label for="qq">QQ:</label>
+            <input type="text" name="qq" id="qq" value="<?php echo $student['qq']; ?>">
+            <br>
 
-                <label for="qq">QQ:</label>
-                <input type="text" name="qq" id="qq" value="<?php echo $student['qq']; ?>" required>
+            <label for="weChat">WeChat:</label>
+            <input type="text" name="weChat" id="weChat" value="<?php echo $student['weChat']; ?>">
+            <br>
 
-                <label for="weChat">WeChat:</label>
-                <input type="text" name="weChat" id="weChat" value="<?php echo $student['weChat']; ?>" required>
-
-                <input type="submit" value="Update">
-            </form>
-        </div>
-    </body>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</body>
 </html>
